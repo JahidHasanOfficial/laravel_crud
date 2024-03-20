@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Create</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   </head>
   <body>
@@ -12,13 +12,18 @@
    </div>
 
    <div class="container">
+    <div class="row d-flex justify-content-center mt-4">
+        <div class="col-md-8 d-flex justify-content-end">
+            <a href="{{ route('products.index') }}" class="btn btn-dark">Back</a>
+        </div>
+    </div>
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
             <div class="card boreder-0 shadow-lg my-4">
                 <div class="card-header bg-dark">
                     <h3 class="text-white">Create Prodduct</h3>
                 </div>
-       <form action="{{ route('products.store') }}" method="post" metas="multipart/form-data">
+       <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="mb-3">
