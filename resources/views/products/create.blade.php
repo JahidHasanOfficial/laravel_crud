@@ -27,12 +27,20 @@
         @csrf
         <div class="card-body">
             <div class="mb-3">
+                <label for="category" class="form-label h5">Category:</label>
+                <select name="category_id" class="form-control" id="category">
+                    <option value="" selected>Add Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="name" class="form-label h5">Name:</label>
-                <input type="text" value="{{ old('name') }}" class="@error('name')@enderror form-control" id="name" name="name" placeholder="Enter Name">
+                <input type="text" value="{{ old('name') }}" class="@error('name') is-invalid @enderror form-control" id="name" name="name" placeholder="Enter Name">
                 @error('name')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
-
             </div>
             <div class="mb-3">
                 <label for="sku" class="form-label h5">Sku:</label>

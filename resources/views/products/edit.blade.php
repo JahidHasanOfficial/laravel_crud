@@ -28,6 +28,16 @@
         @csrf
         <div class="card-body">
             <div class="mb-3">
+                <label for="category" class="form-label h5">Category:</label>
+                <select name="category_id" class="form-control" id="category">
+                    <option value="">Select Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" @if($product->category_id == $category->id) selected @endif>{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="name" class="form-label h5">Name:</label>
                 <input type="text" value="{{ old('name', $product->name) }}" class="@error('name')@enderror form-control" id="name" name="name" placeholder="Enter Name">
                 @error('name')

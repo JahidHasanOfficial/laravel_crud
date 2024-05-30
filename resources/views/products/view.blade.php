@@ -23,15 +23,23 @@
                 <div class="card-header bg-dark">
                     <h3 class="text-white"> Prodduct Details Page</h3>
                 </div>
-       
-        <div class="card-body">
+
+        <div class="card-body p-5">
             <div class="mb-3">
-                <h4><b><strong>Name:</strong></b> {{ $product->name }}</h4>
-               
+                @if(isset($category))
+                <h4><b><strong>Namesdff:</strong></b> {{ $category->name }}</h4>
+            @endif
+
+
 
             </div>
             <div class="mb-3">
-                <h4><b><strong>Sku:</strong></b> {{ $product->sku }}</h4>  
+                <h4><b><strong>Name:</strong></b> {{ $product->name }}</h4>
+
+
+            </div>
+            <div class="mb-3">
+                <h4><b><strong>Sku:</strong></b> {{ $product->sku }}</h4>
             </div>
             <div class="mb-3">
                 <h4><b><strong>Price:</strong></b> {{ $product->price }}</h4>
@@ -39,7 +47,7 @@
             <div class="mb-3">
                 <h4><b><strong>Description:</strong></b> {{ $product->description }}</h4>
             </div>
-           
+
             <div class="mb-3">
                 <h4><b><strong>Image:</strong></b></h4>
                 <div class="text-center">
@@ -47,9 +55,9 @@
                 </div>
             </div>
             <div class="mb-3">
-                <h4><b><strong>Date & Time:</strong></b> {{ \Carbon\Carbon::parse($product->created_at)->format('d M Y H:i:s') }}</h4>  
+                <h4><b><strong>Date & Time:</strong></b> {{ \Carbon\Carbon::parse($product->created_at)->format('d M Y H:i:s') }}</h4>
             </div>
-           
+
         </div>
        </form>
 

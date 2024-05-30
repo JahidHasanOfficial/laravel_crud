@@ -14,7 +14,7 @@
    <div class="container">
     <div class="row d-flex justify-content-center mt-4">
         <div class="col-md-10 d-flex justify-content-end">
-            <a href="{{ route('products.create') }}" class="btn btn-dark">Create Prodduct</a>
+            <a href="{{ route('categories.create') }}" class="btn btn-dark">Create Category</a>
         </div>
     </div>
     <div class="row d-flex justify-content-center">
@@ -24,7 +24,7 @@
         <div class="col-md-10">
             <div class="card boreder-0 shadow-lg my-4">
                 <div class="card-header bg-dark">
-                    <h3 class="text-white"> Prodduct List</h3>
+                    <h3 class="text-white"> Category List</h3>
                 </div>
 
                 <div>
@@ -32,50 +32,44 @@
                         <thead>
                           <tr>
                             <th scope="col">SL</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Sku</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Image</th>
+                            <th scope="col">Category_Name</th>
+
                             <th scope="col">Created_at</th>
-                            {{-- <th scope="col">Description</th>
-                            <th scope="col">Image</th> --}}
+
                             <th scope="col" class="text-center">Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach ($products as $product )
+                          @foreach ($categories as $category )
                           <tr>
                             <th scope="row">{{ $loop->index+1 }}</th>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->sku }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>
-                              <img src="{{ asset('uploads/products/' . $product->image) }}" width="50px" height="50px" alt="" style="border-radius: 50%;">
-                          </td>
-                          
-                            <td>{{ \Carbon\Carbon::parse($product->created_at)->format('d M Y H:i:s') }}</td>
-                           
-                            <td class="text-center">
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">Edit</a>
-                                <a href="{{ route('products.view', $product->id) }}" class="btn btn-primary">View</a>
-                               
-                               
-                                <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this product?')) { document.getElementById('delete-product-form-{{ $product->id }}').submit(); }" class="btn btn-danger">Delete</a>
+                            <td>{{ $category->name }}</td>
 
-                                <form id="delete-product-form-{{ $product->id }}" action="{{ route('products.destroy', $product->id) }}" method="POST">
+
+
+                            <td>{{ \Carbon\Carbon::parse($category->created_at)->format('d M Y H:i:s') }}</td>
+
+                            <td class="text-center">
+                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary">Edit</a>
+
+
+
+                                <a href="#" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this product?')) { document.getElementById('delete-product-form-{{ $category->id }}').submit(); }" class="btn btn-danger">Delete</a>
+
+                                <form id="delete-product-form-{{ $category->id }}" action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
                                 </form>
-                                
+
                             </td>
-                            
+
                           </tr>
-                              
+
                           @endforeach
                         </tbody>
                       </table>
                 </div>
-       
+
 
         </div>
 
